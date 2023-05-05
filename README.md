@@ -71,6 +71,4 @@ Download my [`Zabbix template`](https://github.com/madnuttah/unbound-docker-stat
 
 Zabbix should display values in `Latest Data` and you can now begin to configure your Grafana panels as you like.
 
-As I am a beginner in Zabbix I guess there are many things to optimize or make better. It's working for me and if you like to contribute, you're most welcome.
-
-I hope I didn't forget a step!
+As I am a beginner in Zabbix I guess there are many things to optimize or to make better. It's working for me and if you like to contribute, you're most welcome.
