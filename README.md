@@ -67,7 +67,7 @@ Map the `unbound-stats.log` to the agent's volumes in it's `docker-compose` like
 
 If you run in trouble, please verify that the permissions are correct, otherwise fix them accordingly. You can always access the running image with `sudo docker exec -ti IMAGENAME /bin/sh`.
 
-Download my [`Zabbix template`](https://github.com/madnuttah/unbound-docker-stats/blob/main/unbound-stats/Zabbix%20Template%20Unbound%20Statistics.yaml) and import it into Zabbix.
+Download my [`Zabbix template`](https://github.com/madnuttah/unbound-docker-stats/blob/main/unbound-stats/Zabbix%20Template%20Unbound%20Statistics.yaml) and import it into your host in Zabbix.
 
 Zabbix should display values in `Latest Data` and you can now begin to configure your Grafana panels as you like.
 
