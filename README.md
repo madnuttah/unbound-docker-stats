@@ -1,12 +1,12 @@
-# Ubound Statistics
+# Unbound Statistics
 
 <p align="center">
     <img src="https://github.com/madnuttah/unbound-docker-stats/blob/main/unbound-stats/screenshots/Screenshot1.jpg" alt="Logo">
 </p>
 
-## I wanted to have the Statistics of Unbound in my Grafana and I didn't want to modify my [`Unbound Docker Image`](https://github.com/madnuttah/unbound-docker) so I was searching for a way to get them into Zabbix and ship the stats to Grafana. This are the steps how I accomplished this.
+I wanted to have the Statistics of Unbound in my Grafana and I didn't want to modify my [`Unbound Docker Image`](https://github.com/madnuttah/unbound-docker) so I was searching for a way to get them into Zabbix and ship the stats to Grafana. This are the steps how I accomplished this.
 
-### There are many instructions around to get Zabbix with Active Agents running, please verify that Zabbix and it's Active Agents run properly. I can't and won't support the installation and configuration of Zabbix in your environment, I'm afraid. This was further tested only with Zabbix 6.4.
+There are many instructions around to get Zabbix with Active Agents running, please verify that Zabbix and it's Active Agents run properly. I can't and won't support the installation and configuration of Zabbix in your environment, I'm afraid. This was further tested only with Zabbix 6.4.
 
 Modify the `unbound.conf` to enable extended statistics:
 
