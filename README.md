@@ -1,7 +1,7 @@
 # Unbound Statistics
 
 <p align="center">
-    <img src="https://github.com/madnuttah/unbound-docker-stats/blob/main/unbound-stats/screenshots/Screenshot1.jpg" alt="Logo">
+    <img src="https://github.com/madnuttah/unbound-docker-stats/blob/main/unbound-stats/screenshots/Screenshot.png" alt="Logo">
 </p>
 
 I wanted to have the statistics of Unbound in my Grafana and I didn't want to modify my [`Unbound Docker Image`](https://github.com/madnuttah/unbound-docker) to use any third party tools like `Zabbix sender` so I was searching for a way to get them into Zabbix and ship the stats to Grafana. 
