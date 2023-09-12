@@ -1,0 +1,2283 @@
+{
+    "zabbix_export": {
+        "version": "6.4",
+        "template_groups": [
+            {
+                "uuid": "a571c0d144b14fd4a87a9d9b2aa9fcd6",
+                "name": "Templates/Applications"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "d6d9c1c715a7429fbd998430e7ea0cd2",
+                "template": "Unbound Statistics",
+                "name": "Unbound Statistics",
+                "description": "A simple and plain NL Net Labs Unbound DNS Resolver Template for Zabbix. As I use Grafana, there are no graphs configured.",
+                "groups": [
+                    {
+                        "name": "Templates/Applications"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "931a953a66c7464a82f90ca9fea1ff90",
+                        "name": "Zabbix Agent: Unbound Statistics",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "vfs.file.contents[/var/log/unbound-stats.log,]",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "description": "",
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "9124b695a8d54c0187d85f13103dfb5c",
+                        "name": "dnscrypt_nonce.cache.count",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.dnscrypt_nonce.cache.count",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=dnscrypt_nonce\\.cache\\.count=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "fd21a62247574f6b9b0970795d91c5d2",
+                        "name": "dnscrypt_shared_secret.cache.count",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.dnscrypt_shared_secret.cache.count",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=dnscrypt_shared_secret\\.cache\\.count=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "dcf2451aa1914e499ab1cd96638d0d0b",
+                        "name": "infra.cache.count",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.infra.cache.count",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=infra\\.cache\\.count=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c8efea8262f7434a96bba86e8baa33f2",
+                        "name": "key.cache.count",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.key.cache.count",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=key\\.cache\\.count=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4accce7e55ed4024828af15f171c8eea",
+                        "name": "mem.cache.dnscrypt_nonce",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.cache.dnscrypt_nonce",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.cache\\.dnscrypt_nonce=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "7316dfa97b70415891e6f70cbf31ca3f",
+                        "name": "mem.cache.dnscrypt_shared_secret",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.cache.dnscrypt_shared_secret",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.cache\\.dnscrypt_shared_secret=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "ac4dcb8eb6f841d29c670faafbf994d4",
+                        "name": "mem.cache.message",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.cache.message",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.cache\\.message=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c12cb4a8f2cb4b359f57b99d12d44096",
+                        "name": "mem.cache.rrset",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.cache.rrset",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.cache\\.rrset=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "024ef50f9b5741d5855246d8859c4a30",
+                        "name": "mem.http.query_buffer",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.http.query_buffer",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.http\\.query_buffer=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "a4f90afd56e642cea4c2220cb648e73b",
+                        "name": "mem.http.response_buffer",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.http.response_buffer",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.http\\.response_buffer=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "2812f8844c2f472caeea6b1716e5c3f5",
+                        "name": "mem.mod.iterator",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.mod.iterator",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.mod\\.iterator=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "7b0b3cb653f241d285ae9dd9ea297431",
+                        "name": "mem.mod.respip",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.mod.respip",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.mod\\.respip=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f0b67f9b43284e40962be5b1a25f7178",
+                        "name": "mem.mod.validator",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.mod.validator",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.mod\\.validator=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "2e946c98e86647eead1511b5af523df6",
+                        "name": "mem.streamwait",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.mem.streamwait",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=mem\\.streamwait=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "73cc9d0f6b794543bbbc08280bb5b52f",
+                        "name": "msg.cache.count",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.msg.cache.count",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=msg\\.cache\\.count=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1d2a83f83874477e9809bbd6af45773e",
+                        "name": "msg.cache.max_collisions",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.msg.cache.max_collisions",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=msg\\.cache\\.max_collisions=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "8ca65810b8d9473d92afd6f0dfa9fbc3",
+                        "name": "num.answer.bogus",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.answer.bogus",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.answer\\.bogus=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "509e1e30075f4ed690c1a976585b2577",
+                        "name": "num.answer.rcode.FORMERR",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.answer.rcode.FORMERR",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.answer\\.rcode\\.FORMERR=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "390113fcc1054a8aa0cd6337864783b2",
+                        "name": "num.answer.rcode.nodata",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.answer.rcode.nodata",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.answer\\.rcode\\.nodata=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f6101565f4e7401181db94e566beaebe",
+                        "name": "num.answer.rcode.NOERROR",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.answer.rcode.NOERROR",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.answer\\.rcode\\.NOERROR=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "d4e43c479c414ddea6287816c217a62a",
+                        "name": "num.answer.rcode.NOTIMPL",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.answer.rcode.NOTIMPL",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.answer\\.rcode\\.NOTIMPL=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "9a572543982540a1b99f2a8dd0e07052",
+                        "name": "num.answer.rcode.NXDOMAIN",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.answer.rcode.NXDOMAIN",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.answer\\.rcode\\.NXDOMAIN=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4b3e3a80dd8b4a07b28b998d8d274547",
+                        "name": "num.answer.rcode.REFUSED",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.answer.rcode.REFUSED",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.answer\\.rcode\\.REFUSED=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "6ec19813ba244a82a68dba5ba5208064",
+                        "name": "num.answer.rcode.SERVFAIL",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.answer.rcode.SERVFAIL",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.answer\\.rcode\\.SERVFAIL=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "abfcead917624dabbd67e73b0fcb51b2",
+                        "name": "num.answer.secure",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.answer.secure",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.answer\\.secure=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "698cc7de92524dfab29518f3ca921924",
+                        "name": "num.query.aggressive.NOERROR",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.aggressive.NOERROR",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.aggressive\\.NOERROR=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4234d4902f5045f2ab9d66d9740df23b",
+                        "name": "num.query.aggressive.NXDOMAIN",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.aggressive.NXDOMAIN",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.aggressive\\.NXDOMAIN=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "790039720858475da527b7d00f103d92",
+                        "name": "num.query.authzone.down",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.authzone.down",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.authzone\\.down=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "dca28fb89f51492b87f3e5317c74b5e0",
+                        "name": "num.query.authzone.up",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.authzone.up",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.authzone\\.up=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "92812bcb2ba2457e8bdbe95dfe2ff1af",
+                        "name": "num.query.class.IN",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.class.IN",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.class\\.IN=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "433ff0858f944fa18cd61609a53b17fd",
+                        "name": "num.query.dnscrypt.replay",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.dnscrypt.replay",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.dnscrypt\\.replay=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3df678d10849475a9ddf2d8ecd76a07b",
+                        "name": "num.query.dnscrypt.shared_secret.cachemiss",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.dnscrypt.shared_secret.cachemiss",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.dnscrypt\\.shared_secret\\.cachemiss=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "ba6983adf1c343d49984c0d92dd84d65",
+                        "name": "num.query.edns.DO",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.edns.DO",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.edns\\.DO=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e0f82eb515384405abd4b1358304028e",
+                        "name": "num.query.edns.present",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.edns.present",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.edns\\.present=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f0b3c8fe0ac7445194c78cad7c3bf98f",
+                        "name": "num.query.flags.AA",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.flags.AA",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.flags\\.AA=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4ac94cde1d234ae78e761b3abdb1ab94",
+                        "name": "num.query.flags.AD",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.flags.AD",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.flags\\.AD=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "052088dc931a4b70894abf599862100d",
+                        "name": "num.query.flags.CD",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.flags.CD",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.flags\\.CD=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "cf99a048de764f899122a3f1f04a75ae",
+                        "name": "num.query.flags.QR",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.flags.QR",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.flags\\.QR=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "749af57e687149b7a5567741a4b27380",
+                        "name": "num.query.flags.RA",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.flags.RA",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.flags\\.RA=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e82e1c2ecbbd4be790127aa54f251cd8",
+                        "name": "num.query.flags.RD",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.flags.RD",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.flags\\.RD=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "a66dde5c48a94de69a7f78635f3b2a1b",
+                        "name": "num.query.flags.TC",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.flags.TC",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.flags\\.TC=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "92f48be442da4727a1bd37a4b6d3c9d9",
+                        "name": "num.query.flags.Z",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.flags.Z",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.flags\\.Z=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "db316949f5834d2294f6e3b4871df974",
+                        "name": "num.query.https",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.https",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.https=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "a043d93b6bdd4112ad6739b9c4cc409f",
+                        "name": "num.query.ipv6",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.ipv6",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.ipv6=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e2f8694f77e043f19ed2e672119c5b7e",
+                        "name": "num.query.opcode.QUERY",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.opcode.QUERY",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.opcode\\.QUERY=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1076100dd7dd42f584dbaa22694ab2ce",
+                        "name": "num.query.ratelimited",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.ratelimited",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.ratelimited=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f89493d7957446b9a015d80e19d13840",
+                        "name": "num.query.tcp",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.tcp",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.tcp=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e85ae2ae5c65438ba0c952c12c40dafc",
+                        "name": "num.query.tcpout",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.tcpout",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.tcpout=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "46d4b4e2b81c49519d913248e1f8e9f2",
+                        "name": "num.query.tls",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.tls",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.tls=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "636cf55c8ba544f2b8e5754bed69c57f",
+                        "name": "num.query.tls.resume",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.tls.resume",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.tls\\.resume=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f87cd6c94fd84f0b94da778a50e862d9",
+                        "name": "num.query.type.A",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.type.A",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.type\\.A=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "5910feefb65a4b87824d052306da00ce",
+                        "name": "num.query.type.AAAA",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.type.AAAA",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.type\\.AAAA=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1b9435354ca842b4b22037045540d345",
+                        "name": "num.query.type.HTTPS",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.type.HTTPS",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.type\\.HTTPS=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "dd3749b87bf14a5c9d9e2f2cc631e1ad",
+                        "name": "num.query.udpout",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.query.udpout",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.query\\.udpout=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "9ce4df88b4ad4da4a83f9bbb003f5412",
+                        "name": "num.rrset.bogus",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.num.rrset.bogus",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=num\\.rrset\\.bogus=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "80ba889f2c8a4ad2a9591a4a169a2c2a",
+                        "name": "rrset.cache.count",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.rrset.cache.count",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=rrset\\.cache\\.count=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1d9264fc19574d6d9d762b3d260dfef8",
+                        "name": "rrset.cache.max_collisions",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.rrset.cache.max_collisions",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=rrset\\.cache\\.max_collisions=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "0a04bfc638e74d7590589f662307a8ec",
+                        "name": "time.elapsed",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.time.elapsed",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=time\\.elapsed=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "ba0f41ccf4e94cdfb9dcf64f1b2ff947",
+                        "name": "time.now",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.time.now",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=time\\.now=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1dcb4ff5885043e591f667ad081fdfd6",
+                        "name": "time.up",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.time.up",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=time\\.up=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "7d2d2bd1b77248e8b7ef2c9df6bb8848",
+                        "name": "total.num.cachehits",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.cachehits",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.cachehits=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "7221c07bab194f17a00be3ca44776616",
+                        "name": "total.num.cachemiss",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.cachemiss",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.cachemiss=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "b0ab7df9469a4f64b2560859e0b6c708",
+                        "name": "total.num.dnscrypt.cert",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.dnscrypt.cert",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.dnscrypt\\.cert=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e20c7d2a85134f7b9cda6488839c01d8",
+                        "name": "total.num.dnscrypt.cleartext",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.dnscrypt.cleartext",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.dnscrypt\\.cleartext=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "32d2984ca5de42f59a072645980f2934",
+                        "name": "total.num.dnscrypt.crypted",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.dnscrypt.crypted",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.dnscrypt\\.crypted=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "bcc15055562d47b7ba47a441941f10a1",
+                        "name": "total.num.dnscrypt.malformed",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.dnscrypt.malformed",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.dnscrypt\\.malformed=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e4d0460eac0e444a9bc4b5c2b03d6304",
+                        "name": "total.num.expired",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.expired",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.expired=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "b1a6ecba54be4212a5a681aa22b82097",
+                        "name": "total.num.prefetch",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.prefetch",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.prefetch=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "b668ede0cf854ca6956b104df6657e8c",
+                        "name": "total.num.queries",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.queries",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.queries=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "ce9417ac148044dd9787348d00cbf1bc",
+                        "name": "total.num.queries_cookie_client",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.queries_cookie_client",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.queries_cookie_client=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "27492760c214446ea430ff62a9307983",
+                        "name": "total.num.queries_cookie_invalid",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.queries_cookie_invalid",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.queries_cookie_invalid=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "4abe5e83d41945b7a06e2da8952dc29f",
+                        "name": "total.num.queries_ip_ratelimited",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.queries_ip_ratelimited",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.queries_ip_ratelimited=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f70f9e9d2e7049469aa42f29c153ab6c",
+                        "name": "total.num.queries_timed_out",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.queries_timed_out",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.queries_timed_out=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1e0e6e89a888485fa6b6705d488c8a3b",
+                        "name": "total.num.recursivereplies",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.num.recursivereplies",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.num\\.recursivereplies=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "b6e1f09097ae44c2b140a1781d04a7ba",
+                        "name": "total.query.queue_time_us.max",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.query.queue_time_us.max",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.query\\.queue_time_us\\.max=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "01ef2998cc864dc59f56b19eba3ceae9",
+                        "name": "total.recursion.time.avg",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.recursion.time.avg",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.recursion\\.time\\.avg=)[-+]?[0-9]*\\.?[0-9]+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "2856fa3326b649418785c7951fa1bde7",
+                        "name": "total.recursion.time.median",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.recursion.time.median",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.recursion\\.time\\.median=)[-+]?[0-9]*\\.?[0-9]+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3c1d62ff47ee4f0a9926204c7d9e1176",
+                        "name": "total.requestlist.avg",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.requestlist.avg",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.requestlist\\.avg=)[-+]?[0-9]*\\.?[0-9]+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "987c28a12df9484c8181532e5c9b2256",
+                        "name": "total.requestlist.current.all",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.requestlist.current.all",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.requestlist\\.current\\.all=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "078169269b044b43bd696a8bea632f72",
+                        "name": "total.requestlist.current.user",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.requestlist.current.user",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.requestlist\\.current\\.user=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "766c42bc31af41b5b92453af36c62034",
+                        "name": "total.requestlist.exceeded",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.requestlist.exceeded",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.requestlist\\.exceeded=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "edaf0c44c21f4cf7b4aadc2bf963d12d",
+                        "name": "total.requestlist.max",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.requestlist.max",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.requestlist\\.max=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e83c187e238540fe8d2582d0c138facd",
+                        "name": "total.requestlist.overwritten",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.requestlist.overwritten",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.requestlist\\.overwritten=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "851ce3e3df1a4c88906ab3f240fb1dfc",
+                        "name": "total.tcpusage",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.total.tcpusage",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=total\\.tcpusage=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "db31f38eeb244f2c83d1468c5c7a4f76",
+                        "name": "unwanted.queries",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.unwanted.queries",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=unwanted\\.queries=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "79cad7c61dda449696e4580db66ae5e7",
+                        "name": "unwanted.replies",
+                        "type": "DEPENDENT",
+                        "key": "zabbix.agent.unbound-stats.unwanted.replies",
+                        "delay": "0",
+                        "value_type": "FLOAT",
+                        "preprocessing": [
+                            {
+                                "type": "REGEX",
+                                "parameters": [
+                                    "(?<=unwanted\\.replies=)\\d+",
+                                    "\\0"
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "vfs.file.contents[/var/log/unbound-stats.log,]"
+                        },
+                        "tags": [
+                            {
+                                "tag": "application",
+                                "value": "unbound"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    {
+                        "tag": "application",
+                        "value": "Unbound"
+                    }
+                ]
+            }
+        ]
+    }
+}
