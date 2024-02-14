@@ -4,7 +4,7 @@
     <img src="https://github.com/madnuttah/unbound-docker-stats/blob/main/unbound-stats/screenshots/Screenshot.png" alt="Logo">
 </p>
 
-I wanted to have the statistics of Unbound in Grafana and since I didn't want to modify my [`Unbound Docker Image`](https://github.com/madnuttah/unbound-docker) to use any third party tools like `Zabbix sender` so I was searching for a way to get them into Zabbix and ship the stats to Grafana. 
+I wanted to have the statistics of Unbound in Grafana and since I didn't want to modify my [`Unbound Docker Image`](https://github.com/madnuttah/unbound-docker) to use any third party tools like `Zabbix sender`, I was found a way to get them into the Zabbix database and ship the stats to Grafana. 
 
 Zabbix active agents can ingest files, so Unbound-Control creates a file with the statistics using a modified healthcheck script and an active Zabbix agent reads and processes the log and saves the values into the Zabbix database. 
 
@@ -38,13 +38,13 @@ You also need to modify your unbound `docker-compose` and add the following line
     
       ...
 
-      - ./unbound/healthcheck.sh:/usr/local/sbin/healthcheck.sh:rw
+      - ./unbound/healthcheck.sh:/usr/local/unbound/sbin/healthcheck.sh:rw
       - ./unbound/log.d/unbound-stats.log:/usr/local/unbound/log.d/unbound-stats.log:rw
 
       ...
     
     healthcheck:
-      test: /usr/local/sbin/healthcheck.sh
+      test: /usr/local/unbound/sbin/healthcheck.sh
       interval: 60s
       retries: 5
       start_period: 15s
@@ -77,10 +77,10 @@ Map the `unbound-stats.log` to the agent's volumes in it's `docker-compose` like
 
 Download my Zabbix [`template`](https://raw.githubusercontent.com/madnuttah/unbound-docker-stats/main/unbound-stats/Zabbix%20Template%20Unbound%20Statistics.json) and import it into your host in Zabbix.
 
-Zabbix should display values in `Latest Data` after a little while and you can now begin to configure your Grafana panels as you like.
+Zabbix should display values in `Latest Data` after a little while and you can now begin to configure your Grafana panels or Zabbix graphs as you like.
 
 If you run in trouble, please verify that the permissions are correct, otherwise fix them accordingly. You can always access the running image with `sudo docker exec -ti CONTAINERNAME /bin/sh`.
 
 I guess there are many things to optimize or to make better, there are no graphs or such for example. It's working for me and if you like to contribute, you're most welcome.
 
-**This was tested only with Zabbix 6.4.**
+**This was tested only with Zabbix 6.4 using the madnuttah/unbound docker image.**

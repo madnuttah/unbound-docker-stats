@@ -2,8 +2,8 @@
 
 ## Unbound Statistics
 
-RAWFILE="/var/tmp/unbound_stats"
-TMPFILE="/var/tmp/unbound_stats.log"
+RAWFILE="/usr/local/unbound/log.d/unbound_stats"
+TMPFILE="/usr/local/unbound/log.d/unbound_stats.tmp"
 FILE="/usr/local/unbound/log.d/unbound-stats.log"
 
 # Run unbound-control and create file with statistics
