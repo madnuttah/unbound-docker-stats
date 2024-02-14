@@ -17,7 +17,7 @@ awk -vRS="" -vOFS=',' '$1=$1' ${TMPFILE} > ${FILE}
 
 ## Healthcheck
 
-nslookup internic.net 127.0.0.1:53 > /dev/null
+nslookup internic.net > /dev/null
 STATUS=$?
 if [[ ${STATUS} -ne 0 ]]
 then
