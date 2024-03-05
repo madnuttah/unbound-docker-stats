@@ -79,8 +79,6 @@ Download my Zabbix [`template`](https://raw.githubusercontent.com/madnuttah/unbo
 
 Zabbix should display values in `Latest Data` after a little while and you can now begin to configure your Grafana panels or Zabbix graphs as you like.
 
-If you run in trouble, please verify that the permissions are correct, otherwise fix them accordingly. You can always access the running image with `sudo docker exec -ti CONTAINERNAME /bin/sh`.
+I guess there are many things to optimize or to make better, there are no graphs or such for Zabbix or completed panels for Grafana for example. If you like to contribute, you're most welcome.
 
-I guess there are many things to optimize or to make better, there are no graphs or such for example. It's working for me and if you like to contribute, you're most welcome.
-
-**This was tested only with Zabbix 6.4 using the madnuttah/unbound docker image.**
+**This was tested only with Zabbix 6.4 using [`madnuttah/unbound-docker`](https://github.com/madnuttah/unbound-docker).**
