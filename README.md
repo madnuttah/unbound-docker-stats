@@ -2,7 +2,9 @@
 
 I wanted to have the statistics of Unbound in Grafana and since I didn't want to modify my [`Unbound Docker Image`](https://github.com/madnuttah/unbound-docker) to use any third party tools like `Zabbix sender`, I found a way to get them into the Zabbix database and ship the stats to Grafana. 
 
-Zabbix active agents can ingest files, so Unbound-Control creates a file with the statistics using a modified healthcheck script and an active Zabbix agent reads and processes the log and saves the values into the Zabbix database. 
+Zabbix active agents can ingest files, so Unbound-Control creates a file with the statistics using a modified healthcheck script and an active Zabbix agent reads and processes the log and saves the values into the Zabbix database.
+
+[`Screenshot`](https://raw.githubusercontent.com/madnuttah/unbound-docker-stats/main/unbound-stats/screenshots/Screenshot.png)
 
 ***
 
