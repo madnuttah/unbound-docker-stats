@@ -51,9 +51,9 @@ Map the `unbound-stats.log` to the agent's volumes in it's `compose` like so:
     image: zabbix/zabbix-agent2:alpine-6.4-latest
     ...
     volumes: 
-    ...  
-    - ./unbound/log.d/unbound-stats.log:/var/log/unbound-stats.log:ro
-          - /var/run/docker.sock:/var/run/docker.sock:ro	  
+      ...  
+      - ./unbound/log.d/unbound-stats.log:/var/log/unbound-stats.log:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro	  
 ```
 
 Download my Zabbix [`template`](https://raw.githubusercontent.com/madnuttah/unbound-docker-stats/main/unbound-stats/Zabbix%20Template%20Unbound%20Statistics.json) and import it into your host in Zabbix.
