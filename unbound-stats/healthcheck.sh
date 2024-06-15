@@ -2,58 +2,57 @@
 
 ## Unbound Statistics
 
-RAWFILE="/usr/local/unbound/log.d/unbound_stats"
-TMPFILE="/usr/local/unbound/log.d/unbound_stats.tmp"
-LOGFILE="/usr/local/unbound/log.d/unbound-stats.log"
+unbound_root=/usr/local/unbound
+
+rawfile="$unbound_root/log.d/unbound_stats"
+tmpfile="$unbound_root/log.d/unbound_stats.tmp"
+logfile="$unbound_root/log.d/unbound-stats.log"
 
 # Run unbound-control and create file with statistics
-/usr/local/unbound/unbound.d/sbin/unbound-control stats_noreset > ${RAWFILE}
+$unbound_root/unbound.d/sbin/unbound-control stats_noreset > ${rawfile}
 
 # Remove unnecessary lines
-sed -r '/.*(histogram|thread).*/d' ${RAWFILE} > ${TMPFILE}
+sed -r '/.*(histogram|thread).*/d' ${rawfile} > ${tmpfile}
 
 # Multiline to single line, separated with commas
-awk -vRS="" -vOFS=',' '$1=$1' ${TMPFILE} > ${LOGFILE}
+awk -vRS="" -vOFS=',' '$1=$1' ${tmpfile} > ${logfile}
 
-# Change to the port Unbound is listening on 127.0.0.1 (localhost)
-PORT="5335"
+## Healthcheck
 
-# Change this to "1" if you would like to verify name resolution using drill
-# in the extended healthcheck
-EXTENDED="0"
-
-# The domain/host to query in the extended check
-DOMAIN="unbound.net"
+# Environment variables
+HEALTHCHECK_PORT=${HEALTHCHECK_PORT:-5335}
+EXTENDED_HEALTHCHECK=${EXTENDED_HEALTHCHECK:-false}
+EXTENDED_HEALTHCHECK_DOMAIN=${EXTENDED_HEALTHCHECK_DOMAIN:-nlnetlabs.nl}
 
 # Check for opened tcp/udp port(s) with netstat, grep port count and save
 # the result into a variable
-CHECK_PORT="$(netstat -ln | grep -c ":$PORT")" &> /dev/null
+check_port="$(netstat -ln | grep -c ":$HEALTHCHECK_PORT")" &> /dev/null
 
-# Opened port count should be larger than 0, otherwise an error in the
-# unbound.conf is likely
-if [[ "$CHECK_PORT" -eq 0 ]]; then
-  echo "⚠️ Port $PORT not open"
+# If opened port count is equal 0 exit ungracefully
+if [ $check_port -eq 0 ]; then
+  echo "⚠️ Port $HEALTHCHECK_PORT not open"
   exit 1
 else
-  echo "✅ Port $PORT open"
-# Exit gracefully if EXTENDED=0
-  if [[ "$EXTENDED" = "0" ]]; then
+  echo "✅ Port $HEALTHCHECK_PORT open"
+# If extended check disabled exit gracefully
+  bool=$EXTENDED_HEALTHCHECK
+  if ! $bool; then
     exit 0
   fi
+# Otherwise continue, we don't exit here
 fi
 
 ## Extended healthcheck
 
 # Use NLnet Labs drill to query localhost for a domain/host and save the result
 # into a variable
-IP="$(drill -Q -p $PORT $DOMAIN @127.0.0.1)" &> /dev/null
+ip="$(drill -Q -p $HEALTHCHECK_PORT $EXTENDED_HEALTHCHECK_DOMAIN @127.0.0.1)" &> /dev/null
 
-# Check the errorlevel of the last command, if larger than 0 something with the 
-# network connection doesn't seem right
-if [[ $? -ne 0 ]]; then
-  echo "⚠️ Domain '$DOMAIN' not resolved"
+# Check the errorlevel of the last command, if not equal 0 exit ungracefully
+if [ $? -ne 0 ]; then
+  echo "⚠️ Domain '$EXTENDED_HEALTHCHECK_DOMAIN' not resolved"
   exit 1 
 else
-  echo "✅️ Domain '$DOMAIN' resolved to '$IP'"
+  echo "✅️ Domain '$EXTENDED_HEALTHCHECK_DOMAIN' resolved to '$ip'"
   exit 0
 fi

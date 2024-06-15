@@ -14,16 +14,16 @@ Adapt the `unbound.conf` to enable extended statistics:
 
 ```
 server:	
-	extended-statistics: yes
-        statistics-cumulative: no
-	statistics-interval: 0	
+  extended-statistics: yes
+  statistics-cumulative: no
+  statistics-interval: 0	
 ```
 
 Download the modified [`healthcheck.sh`](https://github.com/madnuttah/unbound-docker-stats/blob/main/unbound-stats/healthcheck.sh) script and place it in your persistent Unbound volume.
 
-You also need to modify your unbound `docker-compose` and add the following lines to the `volumes` section. 
+You also need to modify your unbound `compose` and add the following lines to the `volumes` section. 
 
-```
+```yaml
  ...
  
  unbound:
@@ -31,7 +31,6 @@ You also need to modify your unbound `docker-compose` and add the following line
     image: madnuttah/unbound:latest
 
     ...
-
     volumes:
     
       ...
@@ -53,9 +52,9 @@ You also need to modify your unbound `docker-compose` and add the following line
 
 Create an Active Zabbix agent on the docker host where Unbound runs on.
 
-Map the `unbound-stats.log` to the agent's volumes in it's `docker-compose` like so:
+Map the `unbound-stats.log` to the agent's volumes in it's `compose` like so:
 
-```
+```yaml
   ...
   
   zabbix-agent2:
