@@ -24,30 +24,22 @@ Download the modified [`healthcheck.sh`](https://github.com/madnuttah/unbound-do
 You also need to modify your unbound `compose` and add the following lines to the `volumes` section. 
 
 ```yaml
- ...
- 
  unbound:
     container_name: unbound
     image: madnuttah/unbound:latest
-
     ...
     volumes:
     
       ...
-
       - ./unbound/healthcheck.sh:/usr/local/unbound/sbin/healthcheck.sh:rw
       - ./unbound/log.d/unbound-stats.log:/usr/local/unbound/log.d/unbound-stats.log:rw
-
-      ...
-    
+      ...    
     healthcheck:
       test: /usr/local/unbound/sbin/healthcheck.sh
       interval: 60s
       retries: 5
       start_period: 15s
-      timeout: 30s  
-      
-    ...
+      timeout: 30s        
 ```
 
 Create an Active Zabbix agent on the docker host where Unbound runs on.
@@ -55,21 +47,13 @@ Create an Active Zabbix agent on the docker host where Unbound runs on.
 Map the `unbound-stats.log` to the agent's volumes in it's `compose` like so:
 
 ```yaml
-  ...
-  
   zabbix-agent2:
     image: zabbix/zabbix-agent2:alpine-6.4-latest
-    
-	...
-    
-	volumes:
-      
-	  ...
-	  
-          - ./unbound/log.d/unbound-stats.log:/var/log/unbound-stats.log:ro
-          - /var/run/docker.sock:/var/run/docker.sock:ro
-	  
-        ...
+    ...
+    volumes: 
+    ...  
+    - ./unbound/log.d/unbound-stats.log:/var/log/unbound-stats.log:ro
+          - /var/run/docker.sock:/var/run/docker.sock:ro	  
 ```
 
 Download my Zabbix [`template`](https://raw.githubusercontent.com/madnuttah/unbound-docker-stats/main/unbound-stats/Zabbix%20Template%20Unbound%20Statistics.json) and import it into your host in Zabbix.
